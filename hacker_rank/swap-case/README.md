@@ -4,8 +4,7 @@ For Example:
 
 Www.HackerRank.com → wWW.hACKERrANK.COM
 Pythonist 2 → pYTHONIST 2 
-
-###Function Description
+Function Description
 
 Complete the swap_case function in the editor below.
 
@@ -13,20 +12,20 @@ swap_case has the following parameters:
 
 string s: the string to modify
 
-###Returns
+Returns
 
 string: the modified string
 Input Format
 
 A single line containing a string s.
 
-###Constraints
+Constraints
 0<len(s)<=1000
 
-###Sample Input 0
+Sample Input 0
 
 HackerRank.com presents "Pythonist 2".
 
-###Sample Output 0
+Sample Output 0
 
 hACKERrANK.COM PRESENTS "pYTHONIST 2".
