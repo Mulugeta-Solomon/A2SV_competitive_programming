@@ -1,7 +1,6 @@
 class Solution:
     def largestPerimeter(self, nums: List[int]) -> int:
         # largest side needs to be smaller than the sum of the other two
-
         nums.sort()
 
         for i in range(len(nums) - 3, -1, -1):
