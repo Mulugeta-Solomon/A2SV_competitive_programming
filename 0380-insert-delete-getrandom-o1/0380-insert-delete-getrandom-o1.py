@@ -19,8 +19,8 @@ class RandomizedSet:
         return True
 
     def getRandom(self) -> int:
-        idx = random.randrange(0, len(self.randomized_set))
-        return (list(self.randomized_set))[idx]
+
+        return random.choice(list(self.randomized_set))
 
 
 # Your RandomizedSet object will be instantiated and called as such:
