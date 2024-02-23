@@ -2,23 +2,23 @@ class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
 
         n, m = len(mat), len(mat[0])
-        result = defaultdict(list)
+        diag_values = defaultdict(list)
         temp = 0
 
         for row in range(n):
             for col in  range(m):
-                result[row+col].append(mat[row][col]) 
+                diag_values[row+col].append(mat[row][col]) 
 
-        final_result = []
-        for idx, list_ in result.items():
+        result = []
+        for idx, list_ in diag_values.items():
             if idx%2 == 0:
                 for num in list_[::-1]:
-                    final_result.append(num)
+                    result.append(num)
             else:
                 for num in list_:
-                    final_result.append(num)
+                    result.append(num)
 
-        return final_result
+        return result
 
 
 
