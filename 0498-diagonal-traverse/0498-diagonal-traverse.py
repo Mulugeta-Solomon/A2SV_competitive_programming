@@ -3,7 +3,6 @@ class Solution:
 
         n, m = len(mat), len(mat[0])
         diag_values = defaultdict(list)
-        temp = 0
 
         for row in range(n):
             for col in  range(m):
