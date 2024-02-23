@@ -6,7 +6,7 @@ class Solution:
                 nums[i] *= 2
                 nums[i+1] = 0
 
-        zeros = nums.count(0)
+        zeros = [num for num in nums if num == 0]
         nums = [num for num in nums if num != 0]       
         # for i in range(len(nums)):
         #     if nums[i] == 0:
@@ -14,6 +14,6 @@ class Solution:
         #             if nums[j] != 0:
         #                 nums[i], nums[j] = nums[j], nums[i]
         
-        return nums + ([0]*zeros)
+        return nums + zeros
 
         
