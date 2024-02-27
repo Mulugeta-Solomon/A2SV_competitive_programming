@@ -6,11 +6,16 @@ class Solution:
         for i in range(len(names)):
             name_height_look_up[heights[i]] = names[i]
         
-        for i in range(len(heights)):
-            for j in range(len(heights) - i - 1):
-                if heights[j] < heights[j+1]:
-                    heights[j], heights[j+1] = heights[j+1], heights[j]
-        
+        for i in range(1, len(heights)):
+            curr_value = heights[i]
+            j = i - 1
+
+            while j >= 0 and curr_value > heights[j]:
+                heights[j+1] = heights[j]
+                j -= 1
+            
+            heights[j+1] = curr_value
+
         # print(name_height_look_up)
         # print(heights)
         
