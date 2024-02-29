@@ -4,10 +4,7 @@ class Solution:
         look_up = {}
         unsorted_nums = nums.copy()
        
-        for i in range(len(nums)):
-            for j in range(len(nums) - i - 1):
-                if nums[j] > nums[j+1]:
-                    nums[j], nums[j+1] = nums[j+1], nums[j]
+        nums.sort()
         
         for idx, value in enumerate(nums):
             if value not in look_up:
