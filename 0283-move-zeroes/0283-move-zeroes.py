@@ -3,17 +3,17 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        right, left = 0, 1
+        holder, seeker = 0, 1
 
-        while left < len(nums):
-            if nums[left] != 0:   
-                while right < left:
-                    if nums[right] == 0:
-                        nums[left], nums[right] = nums[right], nums[left]
-                        break
-                    right += 1 
+        while seeker < len(nums):
+            if nums[seeker] != 0 and nums[holder] == 0:
+                nums[seeker], nums[holder] = nums[holder], nums[seeker]
 
-            left += 1
+            if nums[holder] != 0:
+                holder += 1
+                
+            seeker += 1
+            
            
         
 
