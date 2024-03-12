@@ -5,7 +5,6 @@ class Solution:
         """
 
         right = len(nums) - 2
-        n = len(nums)
 
         while right >= 0:
             if nums[right] < nums[right+1]:
@@ -13,9 +12,9 @@ class Solution:
             right -= 1
         
         if right < 0:
-            nums[0:n] = nums[::-1]
+            nums[:] = nums[::-1]
         else:
-            for left in range(n - 1, right, -1):
+            for left in range(len(nums) - 1, right, -1):
                 if nums[left] > nums[right]:
                     break
             
