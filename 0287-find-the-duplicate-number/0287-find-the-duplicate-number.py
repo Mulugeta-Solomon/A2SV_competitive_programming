@@ -1,13 +1,16 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
 
-        nums.sort()
-        left, right = 0, 1
+        bit_nums = {}
 
-        while right < len(nums):
-            if nums[right] == nums[left]:
-                return nums[left]
-            
-            left += 1
-            right += 1
+        for i in range(len(nums)):
+            if nums[i] not in bit_nums:
+                bit_nums[nums[i]] = 1
+            else:
+                bit_nums[nums[i]] += 1
+
+        for num, freq in bit_nums.items():
+            if freq > 1:
+                return num
+
         
