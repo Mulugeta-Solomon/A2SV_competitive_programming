@@ -4,21 +4,21 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
 
-        i = len(nums)-1
+        right = len(nums) - 2
+        n = len(nums)
 
-        while i > 0 and nums[i-1] >= nums[i]:
-            i = i-1
-
-        if i < 1:
-            nums[:] = nums[::-1]
-        else:
-            j = len(nums) - 1
-
-            while nums[j] <= nums[i-1]:
-                j = j-1
-
-            nums[i-1], nums[j] = nums[j], nums[i-1]
-            nums[i:] =  reversed(nums[i:])
-
-
+        while right >= 0:
+            if nums[right] < nums[right+1]:
+                break
+            right -= 1
         
+        if right < 0:
+            nums[0:n] = nums[::-1]
+        else:
+            for left in range(n - 1, right, -1):
+                if nums[left] > nums[right]:
+                    break
+            
+            nums[right], nums[left] = nums[left], nums[right]
+
+            nums[right+1:] = nums[right+1:][::-1]
