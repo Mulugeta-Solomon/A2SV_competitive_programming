@@ -4,17 +4,24 @@ class Solution:
         first_ptr, second_ptr, result = 0, 0, []
 
         while first_ptr < len(firstList) and second_ptr < (len(secondList)):
-            first_1, second_1 = firstList[first_ptr]
-            first_2, second_2 = secondList[second_ptr]
-
-            if first_1 <= second_2 and first_2 <= second_1:
-                result.append([max(first_1, first_2), min(second_1, second_2)])
+            first, second = firstList[first_ptr], secondList[second_ptr]
             
-            if second_1 <= second_2:
+            if first[1] < second[0]:
                 first_ptr += 1
-            else:
+                continue 
+            if first[0] > second[1]:
                 second_ptr += 1
+                continue
+
+            result.append([max(first[0], second[0]), min(first[1], second[1])])
+            
+            if first[1] > min(first[1], second[1]):
+                second_ptr += 1
+            else:
+                first_ptr += 1
         
         return result 
+
+
 
 
