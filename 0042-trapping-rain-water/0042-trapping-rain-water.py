@@ -1,7 +1,7 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
 
-
+        if not height and len(height) < 3: return 0
 
         left, right, trapped_water = 0, len(height) - 1, 0
         left_max, right_max = height[0], height[len(height) - 1]
