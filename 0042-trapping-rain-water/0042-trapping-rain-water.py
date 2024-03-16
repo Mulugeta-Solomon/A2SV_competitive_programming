@@ -1,48 +1,20 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
 
-        left, right, trap_water = 0, len(height) - 1, 0
-       
+        if not height and len(height) < 3: return 0
+
+        left, right, trapped_water = 0, len(height) - 1, 0
+        left_max, right_max = height[0], height[len(height) - 1]
+
         while left < right:
-            if height[left] < height[right]:
-                min_height_left = height[left]
-                bucket, water, location_left = 0, 0, left
-
-                while left < right:
-                    if height[left] < min_height_left:
-                        bucket += (min_height_left - height[left])
-                    else:
-                        min_height_left = height[left]
-                        water += bucket
-                        bucket = 0
-                        location_left = left
-                    left += 1
-
-                if min_height_left <= height[right]:
-                    water += bucket
-                else:
-                    left = location_left
-
+            if left_max < right_max:
+                left += 1
+                left_max = max(left_max, height[left])
+                trapped_water += left_max - height[left]
             else:
-                min_height_right = height[right]
-                bucket, water, location_right = 0, 0, right
-
-                while left < right:
-                    if height[right] < min_height_right:
-                        bucket += (min_height_right - height[right])
-                    else:
-                        min_height_right = height[right]
-                        water += bucket
-                        bucket = 0
-                        location_right = right
-                    right -= 1
-                
-                if min_height_right <= height[left]:
-                    water += bucket
-                else:
-                    right = location_right
-            
-
-            trap_water += water
-
-        return trap_water
+                right -= 1 
+                right_max = max(right_max, height[right])
+                trapped_water += right_max - height[right]
+        
+        return trapped_water
+        
