@@ -22,5 +22,4 @@ class Solution:
                     chars[result] = char
                     result += 1
             
-        del chars[result:]
         return result 
