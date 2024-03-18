@@ -1,8 +1,5 @@
 class Solution:
     def compress(self, chars: List[str]) -> int:
-
-        if len(chars) == 1:
-            return 1
         
         left, result = 0, 0
         
