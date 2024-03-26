@@ -11,9 +11,8 @@ class Solution:
                 window_sum -= nums[left]
                 left += 1
         
-        if min_subarr == float('inf'):
-            return 0
+
         
-        return min_subarr
+        return 0 if min_subarr == float('inf') else min_subarr
             
 
