@@ -1,19 +1,22 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         
-        answer = [0] * len(nums)
-        prefix_product = 1
-        suffix_product = 1
+        prod, zero_count, idx = 1,nums.count(0), None
+        if zero_count > 1:
+            return [0] * len(nums)
 
         for i in range(len(nums)):
-            answer[i] = prefix_product
-            prefix_product *= nums[i]
+            if nums[i] != 0:
+                prod *= nums[i]
+    
 
-        for i in range(len(nums)-1, -1, -1):
-            answer[i] *= suffix_product
-            suffix_product *= nums[i]
-
-        return answer 
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                nums[i] = prod
+            else:
+                nums[i] = int((prod / nums[i]) *  (0 if zero_count == 1 else 1))
         
+        return nums
 
+        
         
