@@ -1,9 +1,6 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
 
-        if len(nums) == 1:
-            return nums[0]
-
         max_sum, prefix_sum, min_ = float('-inf'), 0, 0
 
         for right in range(len(nums)):
