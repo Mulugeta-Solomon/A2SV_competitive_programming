@@ -10,6 +10,6 @@ class Solution:
         rev_prefix_sum = prefix_sum[::-1]
         result = ''
         for i in range(len(rev_prefix_sum) - 1):
-             result += chr(ord(s[i]) + rev_prefix_sum[i])
+             result += chr((ord(s[i]) - 97 + rev_prefix_sum[i]) % 26 + 97)
         
         return result
