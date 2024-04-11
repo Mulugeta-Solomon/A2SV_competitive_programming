@@ -7,18 +7,12 @@ class Solution:
             num_passengers, from_, to = trips[i]
             prefix_sum[from_] += num_passengers
             prefix_sum[to] -= num_passengers
-        print(prefix_sum[:10])
-        for right in range(len(prefix_sum)):
+
+        for right in range(len(prefix_sum) - 1):
             prefix_sum[right+1] += prefix_sum[right]
 
-            if right > 0 and prefix_sum[right] == 0:
-                break 
-        print(prefix_sum[:10])
         for right in range(len(prefix_sum)):
             if prefix_sum[right] > capacity:
                 return False
-            
-            if right > 0 and prefix_sum[right] == 0:
-                break 
         
         return True 
