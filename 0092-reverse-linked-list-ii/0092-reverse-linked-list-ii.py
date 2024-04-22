@@ -4,13 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-
-
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
-        
-        if not head or not head.next:
-            return head
-
         result = ListNode(0, head) # create dummy node 
 
         left_prev, curr = result, head 
@@ -26,7 +20,7 @@ class Solution:
         
         left_prev.next.next = curr 
         left_prev.next = prev 
-        
+
         return result.next
 
 
