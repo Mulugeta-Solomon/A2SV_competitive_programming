@@ -12,7 +12,6 @@ class Solution:
         return result
     
     def depthFirstSearch(self, root: Optional[TreeNode], result: List[int]) -> List[int]:
-
         if root is None:
             return 
         
