@@ -16,7 +16,7 @@ class TopVotedCandidate:
 
     def q(self, t: int) -> int:
 
-        indx = bisect_right(self.times, t) - 1
+        indx = self.binarySearch(t)
 
         return self.leads[indx]
 
@@ -29,7 +29,7 @@ class TopVotedCandidate:
 
             if self.times[mid] > target and self.times[mid - 1] < target:
                 return mid - 1
-
+                
             if mid >= len(self.times) - 1 or self.times[mid] == target:
                 return mid
             elif self.times[mid] > target:
