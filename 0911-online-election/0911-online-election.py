@@ -16,7 +16,7 @@ class TopVotedCandidate:
 
     def q(self, t: int) -> int:
 
-        indx = self.binarySearch(t)
+        indx = self.binarySearch(t) 
 
         return self.leads[indx]
 
@@ -25,17 +25,13 @@ class TopVotedCandidate:
 
         while left <= right:
             mid = left + (right - left) // 2
-            print(mid, target)
-
-            if self.times[mid] > target and self.times[mid - 1] < target:
-                return mid - 1
-                
-            if mid >= len(self.times) - 1 or self.times[mid] == target:
-                return mid
-            elif self.times[mid] > target:
+            
+            if self.times[mid] > target:
                 right = mid - 1
             else:
                 left = mid + 1
+        
+        return left - 1
 
 
 
