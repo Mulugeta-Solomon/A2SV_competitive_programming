@@ -47,9 +47,7 @@ class MyCircularDeque:
         return len(self.deque) == 0
 
     def isFull(self) -> bool:
-        if self.count == self.k:
-            return True
-        return False
+        return self.count == self.k
         
 
 
