@@ -19,7 +19,7 @@ class Solution:
         ans = ''
         for i in range(len(result)):
             if i == 0:
-                ans += result [i][1]
+                ans += result[i][1]
             else:
                 ans += ' ' + result[i][1]
         
