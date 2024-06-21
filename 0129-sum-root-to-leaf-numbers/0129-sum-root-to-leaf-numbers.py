@@ -6,25 +6,23 @@
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        paths = []
+        paths, total = [], 0
 
         def dfs(root, path):
-            # base case 
             if not root:
                 return 
-            
-            path += str(root.val)
 
-            if not(root.left or root.right):
+            path += str(root.val)
+            if not (root.left or root.right):
                 paths.append(path)
-                return 
+                return
+
             dfs(root.left, path)
             dfs(root.right, path)
-        
+
         dfs(root, '')
-        ans = 0
         for val in paths:
-            ans += int(val)
-        
-        return ans 
+            total += int(val)
+
+        return total
         
