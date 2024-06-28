@@ -16,12 +16,14 @@ class Solution:
             for course in graph[curr]:
                 if not dfs(course):
                     return False
-            
+            visited.remove(curr)
+            del graph[curr]
             return True
 
         visited = set()
-        for preq in graph.keys():
-            if not dfs(preq):
+
+        for course in range(numCourses):
+            if not dfs(course):
                 return False
         return True
         
