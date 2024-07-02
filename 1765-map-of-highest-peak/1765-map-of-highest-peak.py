@@ -13,7 +13,7 @@ class Solution:
                 if isWater[r][c] == 1:
                     queue.append((r, c, 0))
         
-        heights = [[-1 for _ in range(rows)] for _ in range(cols)]
+        heights = [[-1 for _ in range(cols)] for _ in range(rows)]
         visited = set()
         while queue:
             size = len(queue)
@@ -28,6 +28,5 @@ class Solution:
                         newRow, newCol = r + direction[0], c + direction[1]
                         if isInbound(newRow, newCol) and (newRow, newCol) not in visited and heights[newRow][newCol] == -1:
                             queue.append((newRow, newCol, curr + 1))
-
 
         return heights
