@@ -26,7 +26,7 @@ class Solution:
 
                     if isInbound(newRow, newCol) and mat[newRow][newCol] == -1:
                         queue.append((newRow, newCol))
-                        mat[newRow][newCol] = 1 # mark visited
-                        result[newRow][newCol] = mat[r][c] + 1
+                        mat[newRow][newCol] = 1 # mark visited and update the info
+                        result[newRow][newCol] = result[r][c] + 1
         
         return result
