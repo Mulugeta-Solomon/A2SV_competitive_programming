@@ -5,10 +5,24 @@ class MedianFinder:
         
 
     def addNum(self, num: int) -> None:
-        self.data.append(num)
+        if not self.data:
+            self.data.append(num)
+        else:
+            left, right = 0, len(self.data) - 1
+            
+            while left <= right:
+                mid = left + (right - left) // 2
+                if self.data[mid] == num:
+                    left = mid 
+                    break
+                if self.data[mid] < num:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+        
+            self.data.insert(left, num)
 
     def findMedian(self) -> float:
-        self.data.sort()
         n = len(self.data)
         idx = n // 2
         if n % 2 == 0:
