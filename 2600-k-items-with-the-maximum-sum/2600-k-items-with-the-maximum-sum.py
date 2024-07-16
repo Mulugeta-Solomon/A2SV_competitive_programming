@@ -7,4 +7,4 @@ class Solution:
             if k <= numOnes + numZeros:
                 return numOnes
             else:
-                return (2 * numsOnes + numZeros) - k
+                return (2 * numOnes + numZeros) - k
