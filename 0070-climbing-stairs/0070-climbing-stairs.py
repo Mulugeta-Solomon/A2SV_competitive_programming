@@ -1,11 +1,18 @@
 class Solution:
-    def climbStairs(self, n: int) -> int:
+    def dp(self, n, memo):
         if n < 2:
             return 1
         
-        left = self.climbStairs(n - 1)
-        right = self.climbStairs(n - 2)
+        if memo[n] != -1:
+            return memo[n]
         
-        return left + right 
+        memo[n] = self.dp(n - 1, memo) + self.dp(n - 2, memo)
+
+        return memo[n]
+
+    def climbStairs(self, n: int) -> int:
+        memo = [-1] * (n + 1)
+        
+        return self.dp(n, memo)
     
         
