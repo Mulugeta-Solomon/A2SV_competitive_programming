@@ -12,7 +12,6 @@ class Solution:
                 return memo[row][col]
             
             memo[row][col] = grid[row][col] + min(dp(row + 1, col), dp(row, col + 1))
-
             return memo[row][col]
             
         
