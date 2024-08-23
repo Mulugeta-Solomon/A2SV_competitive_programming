@@ -1,20 +1,22 @@
 class Solution:
-    def rob(self, nums: List[int]) -> int:
-        if len(nums) == 0 or nums is None:
-            return 0
-
-        if len(nums) <= 2:
-            return max(nums)
+    def dp(self, mem, nums, i):
+        if i == 0:
+            return nums[0]
+        if i == 1:
+            return max(nums[0], nums[1])
         
+        if i not in mem:
+            mem[i] = max(self.dp(mem,nums, i - 1), nums[i] + self.dp(mem,nums, i - 2))
+        
+        return mem[i]
 
-        return max(self.rob_simple(nums[:-1]), self.rob_simple(nums[1:]))
+    def rob(self, nums):
+        n = len(nums)
 
-    def rob_simple(self, nums: List[int]) -> int:
-        t1 = nums[0]
-        t2 = max(nums[0], nums[1])
-        for i in range(2, len(nums)):
-            temp = t2
-            t2 = max(nums[i] + t1, t2)
-            t1 = temp
-
-        return t2
+        if n <= 2:
+            return max(nums)
+            
+        case1 = nums[:-1]
+        case2 = nums[1:]
+        
+        return max(self.dp(dict(),case1, n - 2), self.dp(dict(),case2, n - 2))
