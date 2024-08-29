@@ -20,16 +20,13 @@ class Solution:
             return comp
 
         def integer(comp):
-            pow = 0
-            result = 0
+            pow, result = 0, 0
 
             for i in range(len(comp) - 1, -1, -1):
                 result += (int(comp[i]) * (2 ** pow))
                 pow += 1
             
             return result
-        
-        print(binary(num))
 
         return integer(complement(binary(num)))
         
