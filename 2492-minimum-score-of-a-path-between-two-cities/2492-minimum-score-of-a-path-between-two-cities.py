@@ -1,23 +1,37 @@
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.size = [1] * size
+
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+       
+    def union(self, x, y):
+        rootX = self.find(x)
+        rootY = self.find(y)
+        if rootX != rootY:
+            if self.size[rootX] > self.size[rootY]:
+                self.root[rootY] = rootX
+                self.size[rootX] += self.size[rootY]
+            else:
+                self.root[rootX] = rootY
+                self.size[rootY] += self.size[rootX]
+
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        graph = defaultdict(list)
+        graph = UnionFind(n + 1)
+        for u, v, dist in roads:
+            graph.union(u, v)
+        
+        repre = graph.find(1)
+        result = float('inf')
 
         for u, v, dist in roads:
-            graph[u].append((v, dist))
-            graph[v].append((u, dist))
-        
-        queue, visited, result = deque(), set(), float('inf')
-        queue.append(1)
-        
-        while queue:
-            size = len(queue)
-            for _ in range(size):
-                curr = queue.popleft()
-                visited.add(curr)
-                for neighbor, dist in graph[curr]:
-                    if neighbor not in visited:
-                        result = min(result, dist)
-                        queue.append(neighbor)
+            if graph.find(u) == repre:
+                result = min(result, dist)
         
         return result
 
