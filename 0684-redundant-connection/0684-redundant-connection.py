@@ -34,16 +34,16 @@ class Solution:
             n = max(n, u, v)
         
         graph = UnionFind(n + 1)
-        i, idx = 0, []
+        i, idx = 0, None
         while i < len(edges):
             u, v = edges[i]
             if graph.find(u) != graph.find(v):
                 graph.union(u, v)
             else:
-                idx.append(i)
+                idx = i
 
             i += 1
 
-        return edges[idx[-1]] 
+        return edges[idx] 
 
         
