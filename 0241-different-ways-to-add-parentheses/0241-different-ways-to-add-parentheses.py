@@ -1,9 +1,7 @@
 class Solution:
     def diffWaysToCompute(self, expression: str) -> List[int]:
 
-        operations = { '+': lambda x, y: x + y, 
-                       '-': lambda x, y: x - y,
-                       '*': lambda x, y: x * y}
+        operations = {'+', '-', '*'}
         
         def backtrack(left, right):
             result = []
@@ -15,7 +13,13 @@ class Solution:
 
                     for x in nums1:
                         for y in nums2:
-                            result.append(operations[expression[i]](x, y))
+                            if expression[i] == '+':
+                                result.append(x + y)
+                            if expression[i] == '-':
+                                result.append(x - y)
+                            if expression[i] == '*':
+                                result.append(x * y)
+                            
             if result == []:
                 result.append(int(expression[left:right + 1]))
             
