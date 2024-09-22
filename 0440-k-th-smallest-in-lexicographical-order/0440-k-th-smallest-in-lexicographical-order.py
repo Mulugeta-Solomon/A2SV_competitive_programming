@@ -1,17 +1,28 @@
 class Solution:
     def findKthNumber(self, n: int, k: int) -> int:
         
-        result = []
-        def dfs(num):
-            if num > n:
-                return
-            result.append(num)
-            num *= 10
+        curr, i = 1, 1
 
-            for i in range(10):
-                dfs(num + i)
+        def count(curr):
+            result = 0
+            neighbor = curr + 1
 
-        for i in range(1, 10):
-            dfs(i)
+            while curr <= n:
+                result += min(neighbor, n + 1) - curr
+                curr *= 10
+                neighbor *= 10
+            
+            return result
 
-        return result[k - 1]
+        while i < k:
+            steps = count(curr)
+
+            if i + steps <= k:
+                curr += 1
+                i += steps
+            else:
+                curr *= 10
+                i += 1
+        
+        return curr
+
