@@ -7,10 +7,10 @@ class Solution:
                 if s[i].isdigit():
                     if len(curr) == 0:
                         curr += s[i]
-                    else:
-                        curr = str(int(curr) + int(s[i]))
-                else:
-                    curr += str(ord(s[i]) - 96)    
+                        continue
+                    curr = str(int(curr) + int(s[i]))
+                    continue
+                curr += str(ord(s[i]) - 96)    
 
             s = str(curr)
             k -= 1
