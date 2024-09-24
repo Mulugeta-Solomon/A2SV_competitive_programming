@@ -10,9 +10,9 @@ class Solution:
                 if count == k:
                     stack = stack[:- k]
                     count = 1
-                continue
-            count = 1
-            stack.append((char, count))
+            else:
+                count = 1
+                stack.append((char, count))
 
         result = ''
         for tup in stack:
