@@ -14,6 +14,3 @@ class Solution:
                 
             seeker += 1
             
-           
-        
-
