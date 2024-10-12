@@ -21,10 +21,7 @@ class Solution:
             result = result.next
             target -= 1
         
-        if result.next:
-            result.next = result.next.next
-        else:
-            result.next = None
+        result.next = result.next.next
 
         return  head
 
