@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: bool
         """
 
-        if len(set(s.split(' '))) != len(set(pattern)):
+        if len(set(s.split(' '))) != len(set(pattern)) or len(s.split(' ')) != len(pattern):
             return False
 
         lookUp = defaultdict(str)
