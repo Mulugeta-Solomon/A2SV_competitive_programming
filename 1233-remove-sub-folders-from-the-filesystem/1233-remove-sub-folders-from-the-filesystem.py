@@ -17,15 +17,7 @@ class Trie:
             curr = curr.children[char]
         curr.is_last = True
 
-        #     if char != '/':
-        #         # idx = ord(char) - ord('a')
-        #         if curr.is_last:
-        #             break
-        #         if not curr.children[char]:
-        #             curr.children[char] = TrieNode()
-        #         curr = curr.children[idx]
-        # curr.is_last = True
-    
+
     def build(self,) -> List[int]:
         result = []
 
@@ -39,7 +31,6 @@ class Trie:
                 backtrack(children, curr)
                 curr = curr[:-(len(char) + 1)]
 
-        
         backtrack(self.root, '')
 
         return result
