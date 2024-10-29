@@ -10,10 +10,10 @@ class Solution:
                     merged[k] = arr1[i]
                     i += 1
                     k += 1
-                else:
-                    merged[k] = arr2[j]
-                    j += 1
-                    k += 1
+                    continue
+                merged[k] = arr2[j]
+                j += 1
+                k += 1
             
             while i < len(arr1):
                 merged[k] = arr1[i]
