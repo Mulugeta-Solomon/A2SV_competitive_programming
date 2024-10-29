@@ -31,7 +31,7 @@ class Solution:
         idx = len(merged) // 2
         
         if len(merged) % 2 == 0:
-            return (merged[idx] + merged[idx-1])/2
+            return (merged[idx] + merged[idx-1]) / 2
 
         return merged[idx]
         
