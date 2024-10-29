@@ -1,21 +1,21 @@
-class TrieNode:
-    def __init__(self, ):
-        self.children = {}
-        self.is_last = False
+# class TrieNode:
+#     def __init__(self, ):
+#         self.children = {}
+#         self.is_last = False
 
 class MapSum:
 
     def __init__(self):
-        self.trie = TrieNode()
+        self.trie = {}
 
     def insert(self, key: str, val: int) -> None:
         curr = self.trie
-        curr.children[key] = val
-        curr.is_last = True 
+        curr[key] = val
+
 
     def sum(self, prefix: str) -> int:
         result = 0
-        for key in self.trie.children:
+        for key in self.trie:
             flag = True
             if len(key) < len(prefix):
                 continue
@@ -24,7 +24,7 @@ class MapSum:
                     flag = False
                     break
             if flag:
-                result += self.trie.children[key]
+                result += self.trie[key]
         
         return result 
 
