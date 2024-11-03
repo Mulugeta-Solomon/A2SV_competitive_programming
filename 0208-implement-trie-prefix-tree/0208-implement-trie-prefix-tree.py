@@ -1,6 +1,6 @@
 class TrieNode:
     def __init__(self,):
-        self.children = [None for _ in range(26)]
+        self.children = defaultdict()
         self.is_last = False
 
 class Trie:
@@ -12,7 +12,7 @@ class Trie:
         curr = self.node
         for char in word:
             idx = ord(char) - ord('a')
-            if not curr.children[idx]:
+            if idx not in curr.children:
                 curr.children[idx] = TrieNode()
             curr = curr.children[idx]
         curr.is_last = True 
@@ -21,7 +21,7 @@ class Trie:
         curr = self.node
         for char in word:
             idx = ord(char) - ord('a')
-            if not curr.children[idx]:
+            if idx not in curr.children:
                 return False
             curr = curr.children[idx]
         
@@ -31,7 +31,7 @@ class Trie:
         curr = self.node 
         for char in prefix:
             idx = ord(char) - ord('a')
-            if not curr.children[idx]:
+            if idx not in curr.children:
                 return False
             curr = curr.children[idx]
         return True
