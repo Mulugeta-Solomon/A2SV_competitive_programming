@@ -13,8 +13,9 @@ class Solution:
 
             if curr > result:
                 return result
-            else:
+            if curr == result:
                 result += 1
-        
+            
+    
         return result
             
