@@ -13,6 +13,7 @@ class Solution:
 
             if curr > result:
                 return result
+                
             if curr == result:
                 result += 1
         
