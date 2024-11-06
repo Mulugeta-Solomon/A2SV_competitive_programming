@@ -1,15 +1,25 @@
 class Solution:
     def canSortArray(self, nums: List[int]) -> bool:
-        numSetbits = defaultdict(int)
+        buckets, curr = [], [] # using a bucket sort
+        currSetbit = None
 
         for num in nums:
-            numSetbits[num] = bin(num).count('1')
+            if not currSetbit:
+                currSetbit = bin(num).count('1')
+                curr.append(num)
+                continue
+            if currSetbit == bin(num).count('1'):
+                curr.append(num)
+            else:
+                currSetbit = bin(num).count('1')
+                buckets.append(curr)
+                curr = [num]
+    
+        if curr:
+            buckets.append(curr)
+            
+        ordered = []
+        for curr in buckets:
+            ordered += sorted(curr)
 
-        for i in range(len(nums)):
-            for j in range(len(nums) - i - 1):
-                if nums[j] > nums[j + 1]:
-                    if numSetbits[nums[j]] != numSetbits[nums[j+1]]:
-                        return False
-                    nums[j], nums[j+1] = nums[j+1], nums[j]
-
-        return True
+        return ordered == sorted(nums)
