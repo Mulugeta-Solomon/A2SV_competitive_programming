@@ -1,7 +1,7 @@
 class Solution:
     def primeSubOperation(self, nums: List[int]) -> bool:
         
-        def prime(n):
+        def sieve(n):
             if n <= 2:
                 return 0
             prime = [1] * n 
@@ -14,19 +14,21 @@ class Solution:
                         prime[j] = 0
                         j += i
                 i += 1
+            
+            return prime
 
-            for i in range(n - 1, -1, -1):
-                if prime[i]:
-                    return i
+        prime = sieve(1001)
 
-        
         for i in range(len(nums) - 1):                        
             if i > 0:
                 n = nums[i] - nums[i - 1]
             else:
                 n = nums[i]
-            
-            curr = prime(n)
+            curr = 0
+            for p, val in enumerate(prime[:n]):
+                if val:
+                    curr = p
+
             nums[i] -= curr
 
             if nums[i] >= nums[i + 1]:
