@@ -31,8 +31,6 @@ class Solution:
 
             if nums[i] >= nums[i + 1]:
                 return False
-            if i > 0 and nums[i] <= nums[i - 1]:
-                return False
 
         return True
 
