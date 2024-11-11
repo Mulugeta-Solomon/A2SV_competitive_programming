@@ -17,7 +17,7 @@ class Solution:
             
             return prime
 
-        prime = sieve(1001)
+        prime = sieve(max(nums) + 1)
 
         for i in range(len(nums) - 1):                        
             if i > 0:
