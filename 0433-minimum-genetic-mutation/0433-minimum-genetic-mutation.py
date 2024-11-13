@@ -1,24 +1,49 @@
 class Solution:
     def minMutation(self, startGene: str, endGene: str, bank: List[str]) -> int:
-  
-        que = deque([[startGene, 0]])
-        ans = 0
+        # Start from the endGene 
+        # Try all posssible ways to get to the startGene
+            # for each mutation try to find valid mutations within the bank
+                # there are valid mutations
+                    # for each valid mutation
+                    # if there are valid mutations after it 
+                        # explore more until you get to the startGene
+                    # else:
+                        # backtrack and explore other valid mutations
+                # there are none 
+                    # return -1
+
+        startGene = list(startGene)
+        endGene = list(endGene)
         st = set()
-        
-        def ok(u, v):
-            res = 0
-            for i in range(len(u)):
-                res += int(u[i] != v[i])
-            return res == 1
-        
-        while que:
-            u = que.popleft()
-            if u[0] == endGene:
-                return u[1]
-            for v in bank:
-                if v not in st:
-                    if ok(u[0], v):
-                        que.append([v, u[1] + 1])
-                        st.add(v)
-                        
+        st.add("".join(endGene))
+        valids = [[endGene,0]]
+
+        if "".join(endGene) not in bank:
+            return -1
+
+
+        MUTATIONS = ["A","C","G","T"]
+        solutions = []
+
+        while True:
+            current_gene,steps = valids.pop()
+
+            for i in range(8):
+                for x in MUTATIONS:
+                    if x != current_gene[i]:
+                        new = current_gene[:]
+                        new[i] = x
+                        s_new = "".join(new)
+                        if s_new in bank and s_new not in st:
+                            valids.append([new,steps + 1])
+                            st.add(s_new)
+                            
+                        if new == startGene:
+                            solutions.append(steps + 1)
+            if not valids:
+                break
+
+        if solutions:
+            return min(solutions)
+
         return -1
