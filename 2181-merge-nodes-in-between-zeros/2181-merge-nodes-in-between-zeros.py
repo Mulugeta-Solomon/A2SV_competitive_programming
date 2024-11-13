@@ -10,8 +10,8 @@ class Solution:
         while curr:
             if curr.val == 0:
                 prev.next.val = wind_sum
-                prev, wind_sum, curr = prev.next, 0, curr.next
-                continue
+                prev, wind_sum = prev.next, 0
+                
             wind_sum += curr.val 
             curr = curr.next
         
