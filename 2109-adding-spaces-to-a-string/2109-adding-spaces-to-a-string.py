@@ -1,9 +1,9 @@
 class Solution:
     def addSpaces(self, s: str, spaces: List[int]) -> str:
-        result, left = '', 0
+        result, left, space = '', 0, ' '
 
         for i, right in enumerate(spaces):
-            result += s[left:right] + ' '
+            result += s[left:right] + space
             left = right
 
             if i == len(spaces) - 1:
