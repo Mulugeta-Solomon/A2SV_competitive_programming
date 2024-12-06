@@ -5,13 +5,13 @@ class Solution:
 
         while curr <= n:
             if (total + curr) > maxSum:
-                break 
+                return result 
             if curr not in banned:
                 total += curr
                 result += 1
 
             curr += 1
-
+               
         return result
             
 
