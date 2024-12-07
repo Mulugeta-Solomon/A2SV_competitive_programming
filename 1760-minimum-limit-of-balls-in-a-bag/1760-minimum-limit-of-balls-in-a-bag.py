@@ -9,7 +9,6 @@ class Solution:
 
                 if totalOperations > maxOperations:
                     return False
-            
             return True
 
         left, right = 1, max(nums)
@@ -21,5 +20,4 @@ class Solution:
                 right = mid
             else:
                 left = mid + 1
-
         return left 
