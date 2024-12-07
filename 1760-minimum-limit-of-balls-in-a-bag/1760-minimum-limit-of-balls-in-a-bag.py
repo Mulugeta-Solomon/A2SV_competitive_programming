@@ -12,7 +12,7 @@ class Solution:
             
             return True
 
-        left, right = 0, max(nums)
+        left, right = 1, max(nums)
 
         while left < right:
             mid = left + (right - left) // 2
