@@ -1,18 +1,34 @@
 class Solution:
     def maxTwoEvents(self, events: List[List[int]]) -> int:
-        times = []
+        result, n = 0, len(events)
+        events.sort(key = lambda x:x[0]) # key=lambda x:x[0] 
 
-        for event in events:
-            times.append([event[0], 1, event[2]]) # 1 start time 
-            times.append([event[1] + 1, 0, event[2]]) # 0 end time 
-        
-        result, max_val = 0, 0
-        times.sort()
+        suffixMax = [0] * n
+        suffixMax[-1] = events[-1][2]
 
-        for time in times:
-            if time[1]:
-                result = max(result, time[2] + max_val)
-            else:
-                max_val = max(max_val, time[2])
-        
+        for i in range(n - 2, -1, -1):
+            suffixMax[i] = max(events[i][2], suffixMax[i + 1])
+
+        def binarysearch(left, right):
+            idx, curr = -1, left - 1
+
+            while left <= right:
+                mid = left + (right - left) // 2
+                if events[mid][0] > events[curr][1]:
+                    idx = mid 
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            
+            return idx
+
+        for i in range(n):
+            left, right = i + 1, n - 1
+            curr = binarysearch(left, right)
+
+            if curr != -1:
+                result = max(result, events[i][2] + suffixMax[curr])
+            
+            result =  max(result, events[i][2])
+             
         return result 
