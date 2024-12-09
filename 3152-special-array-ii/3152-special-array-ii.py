@@ -1,46 +1,42 @@
 class Solution:
     def isArraySpecial(self, nums: List[int], queries: List[List[int]]) -> List[bool]:
+        subarr, previous = [], 0
+        parity = 'E' if nums[0] % 2 == 0 else 'O'
         
-        if len(queries) == 1:
-            left, right = queries[0]
-            if right - left + 1 == 1:
-                return [True]
-            
-        prefix_sum = [0] * (len(nums) + 1)
-        prefix_sum[0] = 0
         for i in range(len(nums)):
-            prefix_sum[i+1] = prefix_sum[i] + nums[i]
+            if i == len(nums) - 1:
+                if previous != i:
+                    subarr.append([previous, i])
+                continue
 
-        result = [None] * len(queries)
-        
-        for i in range(len(queries)):
-            left, right = queries[i]
-            check = right - left + 1
-            
-            if check == 2:
-                result[i] = (prefix_sum[right] - prefix_sum[left - 1]) % 2 != 0
-                    
-            if check == 3:
-                for j in range(left + 1, right + 1):
-                    if nums[j-1] % 2 == 0 and nums[j] % 2 != 0:
-                        result[i] == True
-                    elif nums[j-1] % 2 != 0 and nums[j] % 2 == 0:
-                        result[i] == True
-                    else:
-                        result[i] =  False
-                        break
-                    
-            else:         
-                if nums[left] % 2 == 0:
-                    if check % 2 == 0:
-                        result[i] = (prefix_sum[right] - prefix_sum[left - 1]) % 2 != 0
-                    else:
-                        result[i] = (prefix_sum[right] - prefix_sum[left - 1]) % 2 == 0
+            if (nums[i + 1] % 2 == 0 and parity == 'E') or (nums[i + 1] % 2 != 0 and parity == 'O'):
+                subarr.append([previous, i])
+                previous = i + 1
+                parity = 'E' if nums[i + 1] % 2 == 0 else 'O'
+                continue
+
+            parity = 'E' if parity == 'O' else 'O'
+
+        def binarysearch(arr, target):
+            left, right = 0, len(arr) - 1
+      
+            while left <= right:
+                mid = left + (right - left) // 2
+                if arr[mid][0] <= target <= arr[mid][1]:
+                    return mid
+
+                if arr[mid][0] > target:
+                    right = mid - 1
                 else:
-                    if check % 2 == 0:
-                        result[i] = (prefix_sum[right] - prefix_sum[left - 1]) % 2 == 0
-                    else:
-                        result[i] = (prefix_sum[right] - prefix_sum[left - 1]) % 2 != 0           
+                    left = mid + 1  
+
+        result = [False] * len(queries)
         
+        for i, (left, right) in enumerate(queries):
+            left = binarysearch(subarr, left)
+            right = binarysearch(subarr, right)
+            
+            if left == right:
+                result[i] = True   
+            
         return result
-        
