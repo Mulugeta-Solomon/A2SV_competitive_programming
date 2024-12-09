@@ -42,12 +42,12 @@ class Solution:
                 previous = i + 1
                 parity = 'E' if nums[i + 1] % 2 == 0 else 'O'
                 continue
-
+            union_find.union(previous, i)
             parity = 'E' if parity == 'O' else 'O'
 
 
         result = [False] * len(queries)
-        
+
         for i, (left, right) in enumerate(queries):
             left = union_find.find(left)
             right = union_find.find(right)
