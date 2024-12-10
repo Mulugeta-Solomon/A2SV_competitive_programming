@@ -14,6 +14,9 @@ class Solution:
                     return True
             
             return False 
+        
+        if not is_possible(1):
+            return -1
 
         left, right, result = 1, len(s) - 1, -1
 
