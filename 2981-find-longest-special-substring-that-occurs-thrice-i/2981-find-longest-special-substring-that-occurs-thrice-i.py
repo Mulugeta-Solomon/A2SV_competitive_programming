@@ -5,11 +5,12 @@ class Solution:
             lookUp, left = defaultdict(int), 0
 
             while left + n <= len(s) :
-                lookUp[s[left:left + n]] += 1
+                if len(set(s[left:left + n])) == 1:
+                    lookUp[s[left:left + n]] += 1
                 left += 1
 
-            for key, val in lookUp.items():
-                if len(set(key)) == 1 and val >= 3:
+            for val in lookUp.values():
+                if val >= 3:
                     return True
             
             return False 
