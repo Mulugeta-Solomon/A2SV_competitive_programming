@@ -1,29 +1,21 @@
 class Solution:
     def reverseVowels(self, s: str) -> str:
-        
-        lookUp = {'a', 'e', 'i', 'o','u', 'A', 'E', 'I', 'O', 'U'}
-        word = list(s)
+        VOWELS = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+        s = list(s)
+
         left, right = 0, len(s) - 1
 
         while left < right:
-
-            while left < right and word[left] not in lookUp:
+            while left < right and s[left] not in VOWELS:
                 left += 1
             
-            while left < right and word[right] not in lookUp:
+            while left < right and s[right] not in VOWELS:
                 right -= 1
+            
+            s[left], s[right] = s[right], s[left]
 
-            word[left], word[right] = word[right], word[left]
             left += 1
             right -= 1
-        
-        result = ''.join(word)
-        
-        return result
-        
-        
-        
 
-
-
-        
+        s = ''.join(s)
+        return s
