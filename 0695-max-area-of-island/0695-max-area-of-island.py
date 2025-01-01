@@ -27,7 +27,7 @@ class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         rows, cols, directions = len(grid), len(grid[0]), [(0, 1), (1, 0), (-1, 0), (0, -1)]
         tree = UnionFind(rows * cols + 1)
-        visited = set()
+        island, result = False, 0
 
         def inBound(x, y):
             return 0 <= x < rows and 0 <= y < cols
@@ -35,32 +35,24 @@ class Solution:
         def getIdx(x, y):
             return (x * cols) + y
 
-        def dfs(row, col):
-            if not grid[row][col] or (row, col) in visited:
-                return 
-            
-            visited.add((row, col))
-            idx = getIdx(row, col)
-
-            for dr, dc in directions:
-                newRow, newCol = row + dr, col + dc
-                if inBound(newRow, newCol):
-                    if grid[newRow][newCol] and (newRow, newCol) not in visited:
-                        newIdx = getIdx(newRow, newCol)
-                        tree.union(idx, newIdx)
-                        dfs(newRow, newCol)
-
 
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c]:
-                    dfs(r, c)
-        print(tree.size)
-        result = set()
+                    island = True
+                    for dr, dc in directions:
+                        newRow, newCol = r + dr, c + dc
+                        if inBound(newRow, newCol) and grid[newRow][newCol]:
+                            tree.union(getIdx(r, c), getIdx(newRow, newCol))
+
+
+        if not island:
+            return result
+
         for i in range(rows * cols + 1):
-            result.add(tree.find(i))
+            result = max(result, tree.size[i])
         
-        return len(result)
+        return result
 
 
 
