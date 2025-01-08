@@ -5,7 +5,7 @@ class Solution:
 
         result, prev, i, flag = [], -1, 0, False, 
         start, end = newInterval
-        print(start, end)
+
         while i < len(intervals):
             left = i
             if not flag and (start < intervals[i][0] and end < intervals[i][0]):
