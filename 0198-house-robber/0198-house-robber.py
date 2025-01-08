@@ -1,16 +1,17 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        if len(nums) == 1:
-            return nums[0]
-            
-        prefix_sum = [0] * len(nums)
-        prefix_sum[0] = nums[0]
-        prefix_sum[1] = nums[1]
+        memo = [-1] * len(nums)
 
-        for i in range(2, len(nums)):
-            prefix_sum[i] = prefix_sum[i-2] + nums[i]
-        
-        print(prefix_sum)
+        def dp(index):
+            if index >= len(nums):
+                return 0
+            if memo[index] != -1:
+                return memo[index]
 
-        return max(prefix_sum[-1], prefix_sum[-2])
+            result = nums[index] + dp(index + 2)
+            result = max(result, dp(index + 1))
+            memo[index] = result
+
+            return result
         
+        return dp(0)
