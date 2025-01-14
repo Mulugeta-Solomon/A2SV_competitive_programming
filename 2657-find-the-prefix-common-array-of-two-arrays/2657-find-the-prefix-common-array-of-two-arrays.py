@@ -18,5 +18,4 @@ class Solution:
             look_upA.add(A[i])
             look_upB.add(B[i])
 
-
         return result[1:] 
