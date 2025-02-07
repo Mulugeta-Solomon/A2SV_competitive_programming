@@ -1,33 +1,20 @@
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-
-        winners = {}
-        losers = {}
-
-        for match in matches:
-            winner, loser = match[0], match[1]
-
-            if winner not in winners:
-                winners[winner] = 1
-            else:
-                winners[winner] += 1
-
-            if loser not in losers:
-                losers[loser] = 1
-            else:
-                losers[loser] += 1
-
-        result = [[],[]]
-
-        for key, value in winners.items():
-            if key not in losers:
-                result[0].append(key)
+        winners, losers = set(), defaultdict(int)
+        result = [[] for _ in range(2)]
+        for winner, loser in matches:
+            winners.add(winner)
+            losers[loser] += 1
         
-        for key, value in losers.items():
-            if value == 1:
-                result[1].append(key)
+        for winner in winners:
+            if winner not in losers:
+                result[0].append(winner)
         
-        for sublist in result:
-            sublist.sort()
+        for loser, freq in losers.items():
+            if freq == 1:
+                result[1].append(loser)
+        
+        for res in result:
+            res.sort()
         
         return result
