@@ -16,9 +16,8 @@ class Solution:
                     curr = 0
                     break
                 curr = min(curr, freq[idx])
-            
-            curr_char = list(chr(ord('a') + idx) * curr)
-            if curr_char:
-                result.extend(curr_char)
+        
+
+            result.extend([chr(ord('a') + idx)] * curr)
 
         return result
