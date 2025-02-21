@@ -7,7 +7,7 @@
 class FindElements:
 
     def __init__(self, root: Optional[TreeNode]):
-        self.root = root
+        self.root, self.visited = root, set()
         self.root.val = 0
         queue = deque([self.root])
 
@@ -15,6 +15,7 @@ class FindElements:
             size = len(queue)
             for _ in range(size):
                 node = queue.popleft()
+                self.visited.add(node.val)
                 if node.left:
                     node.left.val = 2 * node.val + 1
                     queue.append(node.left)
@@ -22,28 +23,8 @@ class FindElements:
                     node.right.val = 2 * node.val + 2
                     queue.append(node.right)
     
-
     def find(self, target: int) -> bool:
-
-        queue = deque([self.root])
-
-        while queue:
-            size = len(queue)
-            for _ in range(size):
-                node = queue.popleft()
-
-                if node.val == target:
-                    return True
-                
-                if node.val > target:
-                    return False
-                
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
-        
-        return False
+        return target in self.visited
                 
 
 
