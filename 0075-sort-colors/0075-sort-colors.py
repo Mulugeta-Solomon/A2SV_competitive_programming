@@ -3,9 +3,13 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-
-        for i in range(len(nums)):
-            for j in range(len(nums) - i - 1):
-                if nums[j] > nums[j+1]:
-                    nums[j], nums[j+1] = nums[j+1], nums[j]
+        freq = [0] * 3
+        for num in nums:
+            freq[num] += 1
+        
+        i = 0
+        for color in range(3):
+            for _ in range(freq[color]):
+                nums[i] = color 
+                i += 1 
         
