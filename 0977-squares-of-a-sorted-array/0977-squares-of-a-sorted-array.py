@@ -5,8 +5,6 @@ class Solution:
                 break
         left, right = nums[:i], nums[i:]
         i, l, r = 0, len(left) - 1, 0
-        print(left)
-        print(right)
 
         while l >= 0 and r < len(right):
             if left[l] ** 2 <= right[r] ** 2:
