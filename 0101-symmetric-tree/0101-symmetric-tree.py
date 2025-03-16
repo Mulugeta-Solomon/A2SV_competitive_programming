@@ -6,33 +6,33 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        def check(curr):
-            if len(curr) % 2:
-                return False
-            left, right = 0, len(curr) - 1
+        
+        def ispalindrome(nums):
+            left, right = 0, len(nums) - 1
             while left < right:
-                if curr[left][0] != curr[right][0] or curr[left][1] == curr[right][1] or curr[left][2] != curr[right][2]:
+                if nums[left] != nums[right]:
                     return False
                 left += 1
                 right -= 1
-            
             return True
-        
-        queue = deque([root])
+
+        queue, levels = deque([root]), []
 
         while queue:
             size, curr = len(queue), []
             for _ in range(size):
                 node = queue.popleft()
-
-                if node.left:
-                    curr.append([node.left.val, 0, node.val])
+                if node:
+                    curr.append(node.val)
                     queue.append(node.left)
-                if node.right:
-                    curr.append([node.right.val, 1, node.val])
                     queue.append(node.right)
+                    continue
+                curr.append(None)
             
-            if not check(curr):
+            levels.append(curr)
+        
+        for level in levels:
+            if not ispalindrome(level):
                 return False
         
         return True
