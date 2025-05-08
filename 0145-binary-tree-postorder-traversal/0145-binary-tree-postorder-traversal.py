@@ -6,17 +6,18 @@
 #         self.right = right
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-
-        result = self.depthFirstSearch(root, [])
-
-        return result
-    
-    def depthFirstSearch(self, root: Optional[TreeNode], result: List[int]) -> List[int]:
-        if root is None:
-            return  
-        self.depthFirstSearch(root.left, result)
-        self.depthFirstSearch(root.right, result)
-        result.append(root.val)
-
-        return result
+        if not root:
+            return []
         
+        stack, result_stack = [root], []
+
+        while stack:
+            node = stack.pop()
+            result_stack.append(node)
+
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+        
+        return [node.val for node in reversed(result_stack)]
