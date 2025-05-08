@@ -6,19 +6,18 @@
 #         self.right = right
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-
-        result = self.depthFirstSearch(root, [])
-
-        return result
-    
-    def depthFirstSearch(self, root: Optional[TreeNode], result: List[int]) -> List[int]:
-        if root is None:
-            return 
+        if not root:
+            return []
         
-        result.append(root.val)
-        self.depthFirstSearch(root.left, result)
-        self.depthFirstSearch(root.right, result)
+        result, stack = [], [root]
 
-        return result
+        while stack:
+            node = stack.pop()
+            result.append(node.val)
+            
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
 
-        
+        return result 
