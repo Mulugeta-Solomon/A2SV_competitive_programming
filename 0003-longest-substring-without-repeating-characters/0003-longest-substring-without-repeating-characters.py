@@ -1,36 +1,16 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        
-        if len(s) == 1:
-            return 1 
-        look_up = set() # to check for seen elements 
-                                                     #rl     
-        left, long_substr, count = 0, 0, 0   # abcabcbb
-                                            # baca
+        left, result = 0, 0
+        freq = defaultdict(int)
+
         for right in range(len(s)):
-            if s[right] not in look_up:
-                look_up.add(s[right])
-                long_substr = max(long_substr, right - left + 1)
-            else:
-                long_substr = max(long_substr, right - left)
-
-                if right == len(s) - 1:
-                    break
-
-                while left <= right and s[left] != s[right]:
-                    look_up.remove(s[left])
-                    left += 1
+            while s[right] in freq and left < right:
+                freq[s[left]] -= 1
+                if not freq[s[left]]:
+                    del freq[s[left]]
                 left += 1
-            
-            if right == len(s) - 1 and long_substr == 0:
-                long_substr = max(long_substr, right - left + 1)
 
-        return long_substr
-                
+            freq[s[right]] += 1 
+            result = max(result, right - left + 1)
 
-
-            
-            
-
-
-            
+        return result
