@@ -12,13 +12,10 @@ class Solution:
                     backtrack(curr, j)
                     curr.pop()
 
-
         choices, result = ['a', 'b', 'c'], []
         for i in range(3):
             curr = [choices[i]]
             backtrack(curr, i)
-        
-
-        if len(result) < k:
-            return ''
-        return ''.join(result[k - 1])
+            if len(result) >= k:
+                return ''.join(result[k - 1])
+        return ''
