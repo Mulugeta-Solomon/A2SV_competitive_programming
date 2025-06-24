@@ -15,14 +15,13 @@ class Solution:
             # Base case
             if row == len(grid) - 1 and col == len(grid[0]) - 1:
                 return True
-
             visited.add((row, col))
             for r, c in graph[grid[row][col]]:
                 newRow, newCol = row + r, col + c
-
-                if isInbound(newRow, newCol) and (newRow, newCol) not in visited and (-r, -c) in graph[grid[newRow][newCol]]:
-                    if dfs(newRow, newCol):
-                        return True
+                if isInbound(newRow, newCol) and (newRow, newCol) not in visited:
+                    if (-r, -c) in graph[grid[newRow][newCol]]: # check that next cell does connect to the current
+                        if dfs(newRow, newCol):
+                            return True
             
             return False
         visited = set()
