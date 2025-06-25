@@ -4,39 +4,34 @@ class Solution:
         Do not return anything, modify board in-place instead.
         """
         row, col = len(board), len(board[0])
-        if not row or not col:
-            return 
+        directions, visited = [(0, 1), (0, -1), (1, 0), (-1, 0)], set()
+        
+        def inbound(x, y):
+            return 0 <= x < row and 0 <= y < col
 
-        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-        queue = deque()
-        
-        def check(x, y):
-            return 1 <= x < row - 1 and 1 <= y < col - 1 and board[x][y] == 'O'
-        
+        def dfs(r, c): # Recursive DFS 
+            if (r, c) in visited:
+                return 
+            visited.add((r, c))
+            for dr, dc in directions:
+                nr, nc = r + dr, c + dc
+                if inbound(nr, nc) and (nr, nc) not in visited and board[nr][nc] == 'O':
+                    dfs(nr, nc)
+
+
         for r in range(row):
             if board[r][0] == 'O':
-                queue.append((r, 0))
+                dfs(r, 0)
             if board[r][col - 1] == 'O':
-                queue.append((r, col - 1))
+                dfs(r, col - 1)
         for c in range(col):
             if board[0][c] == 'O':
-                queue.append((0, c))
+                dfs(0, c)
             if board[row - 1][c] == 'O':
-                queue.append((row - 1, c))
-
-        while queue:
-            size = len(queue)
-            for _ in range(size):
-                r, c = queue.popleft()
-                board[r][c] = 'T'
-                for dr, dc in directions:
-                    nr, nc = r + dr, c + dc
-                    if check(nr, nc):
-                        queue.append((nr, nc))
-
+                dfs(row - 1, c)
+        
         for r in range(row):
             for c in range(col):
-                if board[r][c] == 'O': 
+                if board[r][c] == 'O' and (r, c) not in visited:
                     board[r][c] = 'X'
-                if board[r][c] == 'T':
-                    board[r][c] = 'O'        
+        
