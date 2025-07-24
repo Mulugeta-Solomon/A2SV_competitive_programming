@@ -8,6 +8,7 @@ class Solution:
             graph[src].append(dst)
             indegree[dst] += 1
         queue, result = deque(), [i for i in range(len(quiet))]
+        print(result)
 
         for i in range(len(quiet)):
             if indegree[i] == 0:
@@ -20,9 +21,6 @@ class Solution:
                 for neighbor in graph[node]:
                     if quiet[result[neighbor]] > quiet[result[node]]:
                         result[neighbor] = result[node]
-                    
-                    # print(node, neighbor)
-                    # print(result)
                     
                     indegree[neighbor] -= 1
                     if indegree[neighbor] == 0:
