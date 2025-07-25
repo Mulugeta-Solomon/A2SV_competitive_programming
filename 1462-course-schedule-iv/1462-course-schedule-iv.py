@@ -1,23 +1,35 @@
 class Solution:
     def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
-        is_reachable = [[False for _ in range(numCourses)] for _ in range(numCourses)]
-        result, graph = [None] * len(queries), defaultdict(list)
+        graph = defaultdict(list)
+        indegree = [0] * numCourses
+        queue = deque() 
 
         for u, v in prerequisites:
             graph[u].append(v)
-    
-        for i in range(numCourses):
-            queue = deque([i])
-            while queue:
-                size = len(queue)
-                for _ in range(size):
-                    curr = queue.popleft()
-                    for neighbor in graph[curr]:
-                        if not is_reachable[curr][neighbor]:
-                            is_reachable[i][neighbor] = True
-                            queue.append(neighbor)
+            indegree[v] += 1
         
+        for i in range(numCourses):
+            if not indegree[i]:
+                queue.append(i)
+        
+        prereq = defaultdict(set)
+
+        while queue:
+            size = len(queue)
+            for _ in range(size):
+                node = queue.popleft()
+                for neigh in graph[node]:
+                    prereq[neigh].add(node)
+
+                    for pre in prereq[node]:
+                        prereq[neigh].add(pre)
+                    
+                    indegree[neigh] -= 1
+                    if not indegree[neigh]:
+                        queue.append(neigh)
+        
+        result = [None] * len(queries)
         for i, (u, v) in enumerate(queries):
-            result[i] = is_reachable[u][v]
+            result[i] = u in prereq[v]
         
         return result
