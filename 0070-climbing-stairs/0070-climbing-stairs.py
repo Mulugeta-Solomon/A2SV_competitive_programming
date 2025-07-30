@@ -1,18 +1,30 @@
 class Solution:
-    def dp(self, n, memo):
-        if n < 2:
-            return 1
-        
-        if memo[n] != -1:
-            return memo[n]
-        
-        memo[n] = self.dp(n - 1, memo) + self.dp(n - 2, memo)
-
-        return memo[n]
-
     def climbStairs(self, n: int) -> int:
-        memo = [-1] * (n + 1)
-        
-        return self.dp(n, memo)
+        # dp[i] --> number of distinct ways to climp to the ith stair 
+        # base case 
+            # dp[1] = 1
+            # dp[2] = 2
+        # recurrence relation 
+            # dp[i] = dp[i - 1] + dp[i - 2]
+        # memo
+
+        memo = {}
+
+        def dp(i):
+            if i < 3:
+                return i
+            
+            if i not in memo:
+                memo[i] = dp(i - 1) + dp(i - 2)
+
+
+            return memo[i]
+
+        result = dp(n)
+        print(memo)
+        return result
+
+
+
     
         
