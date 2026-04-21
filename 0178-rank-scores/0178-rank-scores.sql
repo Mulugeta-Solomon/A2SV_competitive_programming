@@ -3,14 +3,9 @@
 
 
 SELECT 
-    s1.score,
-    (SELECT 
-        COUNT(DISTINCT s2.score)
-    FROM Scores AS s2
-    WHERE s2.score >= s1.score 
-        ) AS rank
-    
+    score,
+    DENSE_RANK() OVER(ORDER BY score DESC)　AS rank
 
-FROM Scores AS s1 
+FROM Scores 
 
-ORDER BY s1.score DESC
+ORDER BY score DESC
