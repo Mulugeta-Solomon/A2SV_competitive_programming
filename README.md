@@ -9,5 +9,6 @@
 | [0570-managers-with-at-least-5-direct-reports](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0570-managers-with-at-least-5-direct-reports/) | Medium |
 | [0584-find-customer-referee](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0584-find-customer-referee/) | Easy |
 | [0595-big-countries](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0595-big-countries/) | Easy |
+| [0626-exchange-seats](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0626-exchange-seats/) | Medium |
 | [1757-recyclable-and-low-fat-products](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/1757-recyclable-and-low-fat-products/) | Easy |
 <!---LeetCode Topics End-->
