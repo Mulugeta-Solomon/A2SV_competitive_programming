@@ -7,5 +7,6 @@
 | [0176-second-highest-salary](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0176-second-highest-salary/) | Medium |
 | [0178-rank-scores](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0178-rank-scores/) | Medium |
 | [0584-find-customer-referee](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0584-find-customer-referee/) | Easy |
+| [0595-big-countries](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0595-big-countries/) | Easy |
 | [1757-recyclable-and-low-fat-products](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/1757-recyclable-and-low-fat-products/) | Easy |
 <!---LeetCode Topics End-->
