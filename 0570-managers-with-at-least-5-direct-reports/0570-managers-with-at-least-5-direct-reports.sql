@@ -10,6 +10,7 @@ FROM (
     INNER JOIN Employee e2
     ON e1.id = e2.managerId
     GROUP BY e1.id
+    HAVING COUNT(e1.id) >= 5
 )t, Employee
 
-WHERE t.id =　Employee.id AND t.count >= 5
+WHERE t.id =　Employee.id 
