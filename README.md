@@ -9,6 +9,7 @@
 | [0570-managers-with-at-least-5-direct-reports](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0570-managers-with-at-least-5-direct-reports/) | Medium |
 | [0584-find-customer-referee](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0584-find-customer-referee/) | Easy |
 | [0595-big-countries](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0595-big-countries/) | Easy |
+| [0602-friend-requests-ii-who-has-the-most-friends](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0602-friend-requests-ii-who-has-the-most-friends/) | Medium |
 | [0626-exchange-seats](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0626-exchange-seats/) | Medium |
 | [1321-restaurant-growth](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/1321-restaurant-growth/) | Medium |
 | [1341-movie-rating](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/1341-movie-rating/) | Medium |
