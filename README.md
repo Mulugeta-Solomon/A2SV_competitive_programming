@@ -12,6 +12,7 @@
 | [0595-big-countries](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0595-big-countries/) | Easy |
 | [0602-friend-requests-ii-who-has-the-most-friends](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0602-friend-requests-ii-who-has-the-most-friends/) | Medium |
 | [0626-exchange-seats](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0626-exchange-seats/) | Medium |
+| [0627-swap-sex-of-employees](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0627-swap-sex-of-employees/) | Easy |
 | [1321-restaurant-growth](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/1321-restaurant-growth/) | Medium |
 | [1341-movie-rating](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/1341-movie-rating/) | Medium |
 | [1731-the-number-of-employees-which-report-to-each-employee](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/1731-the-number-of-employees-which-report-to-each-employee/) | Easy |
