@@ -5,6 +5,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0176-second-highest-salary](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0176-second-highest-salary/) | Medium |
+| [0177-nth-highest-salary](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0177-nth-highest-salary/) | Medium |
 | [0178-rank-scores](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0178-rank-scores/) | Medium |
 | [0570-managers-with-at-least-5-direct-reports](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0570-managers-with-at-least-5-direct-reports/) | Medium |
 | [0584-find-customer-referee](https://github.com/Mulugeta-Solomon/A2SV_competitive_programming/tree/main/0584-find-customer-referee/) | Easy |
